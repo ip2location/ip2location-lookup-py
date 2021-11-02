@@ -16,19 +16,19 @@ You can install this tool by using pip in Windows or Linux. To install this tool
 Query an IP address and display the result
 
 ```
-ip2location -d [IP2LOCATION BIN DATA PATH] --ip [IP ADDRESS]  
+ip2locationpy -d [IP2LOCATION BIN DATA PATH] --ip [IP ADDRESS]  
 ```
 
 Query all IP addresses from an input file and display the result
 
 ```
-ip2location -d [IP2LOCATION BIN DATA PATH] -i [INPUT FILE PATH]  
+ip2locationpy -d [IP2LOCATION BIN DATA PATH] -i [INPUT FILE PATH]  
 ```
 
 Query all IP addresses from an input file and display the result in XML format
 
 ```
-ip2location -d [IP2LOCATION BIN DATA PATH] -i [INPUT FILE PATH] --format XML  
+ip2locationpy -d [IP2LOCATION BIN DATA PATH] -i [INPUT FILE PATH] --format XML  
 ```
 
 ## Download More Sample Databases
