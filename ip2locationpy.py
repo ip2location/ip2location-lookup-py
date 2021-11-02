@@ -33,7 +33,10 @@ if (os.path.isfile(default_path + "IP2LOCATION-LITE-DB1.IPV6.BIN") == False):
 
 def create_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-p', '--ip', metavar='Specify an IP address or hostname.')
+    # parser.add_argument('-p', '--ip', metavar='Specify an IP address.')
+    gp = parser.add_mutually_exclusive_group()
+    gp.add_argument('-p', '--ip', metavar='Specify an IP address.')
+    gp.add_argument('ip', nargs='?', metavar='Specify an IP address.')
     parser.add_argument('-d', '--database', metavar='Specify the path of IP2Location BIN database file.')
     parser.add_argument('-i', '--input_file', metavar='Specify an input file of IP address list, one IP per row.')
     parser.add_argument('-o', '--output_file', metavar='Specify an output file to store the lookup results.')
