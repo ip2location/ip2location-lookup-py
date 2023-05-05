@@ -9,8 +9,8 @@ import IP2Location
 from re import match
 # from shutil import copyfile
 
-ip2location_result_fields = ['ip', 'country_short', 'country_long', 'region', 'city', 'isp', 'latitude', 'longitude', 'domain', 'zipcode', 'timezone', 'netspeed', 'idd_code', 'area_code', 'weather_code', 'weather_name', 'mcc', 'mnc', 'mobile_brand', 'elevation', 'usage_type', 'address_type', 'category', ]
-ip2location_outputs_reference = ['ip', 'country_code', 'country_name', 'region_name', 'city_name', 'isp', 'latitude', 'longitude', 'domain', 'zip_code', 'time_zone', 'net_speed', 'idd_code', 'area_code', 'weather_station_code', 'weather_station_name', 'mcc', 'mnc', 'mobile_brand', 'elevation', 'usage_type', 'address_type', 'category', ]
+ip2location_result_fields = ['ip', 'country_short', 'country_long', 'region', 'city', 'isp', 'latitude', 'longitude', 'domain', 'zipcode', 'timezone', 'netspeed', 'idd_code', 'area_code', 'weather_code', 'weather_name', 'mcc', 'mnc', 'mobile_brand', 'elevation', 'usage_type', 'address_type', 'category', 'district', 'asn', 'as_name', ]
+ip2location_outputs_reference = ['ip', 'country_code', 'country_name', 'region_name', 'city_name', 'isp', 'latitude', 'longitude', 'domain', 'zip_code', 'time_zone', 'net_speed', 'idd_code', 'area_code', 'weather_station_code', 'weather_station_name', 'mcc', 'mnc', 'mobile_brand', 'elevation', 'usage_type', 'address_type', 'category', 'district', 'asn', 'as_name', ]
 
 # Define BIN database default path
 if platform.system() == 'Windows':
@@ -33,10 +33,10 @@ if (os.path.isfile(default_path + "IP2LOCATION-LITE-DB1.IPV6.BIN") == False):
 
 def create_parser():
     parser = argparse.ArgumentParser()
-    # parser.add_argument('-p', '--ip', metavar='Specify an IP address.')
-    gp = parser.add_mutually_exclusive_group()
-    gp.add_argument('-p', '--ip', metavar='Specify an IP address.')
-    gp.add_argument('ip', nargs='?', metavar='Specify an IP address.')
+    parser.add_argument('-p', '--ip', metavar='Specify an IP address.')
+    # gp = parser.add_mutually_exclusive_group()
+    # gp.add_argument('-p', '--ip', metavar='Specify an IP address.')
+    # gp.add_argument('ip', nargs='?', metavar='Specify an IP address.')
     parser.add_argument('-d', '--database', metavar='Specify the path of IP2Location BIN database file.')
     parser.add_argument('-i', '--input_file', metavar='Specify an input file of IP address list, one IP per row.')
     parser.add_argument('-o', '--output_file', metavar='Specify an output file to store the lookup results.')
@@ -116,6 +116,18 @@ def print_usage():
 "           usage_type\n"
 "           Usage type classification of ISP or company.\n"
 "\n"
+"           category\n"
+"           IAB content taxonomy category of IP address or domain name.\n"
+"\n"
+"           district\n"
+"           District or county name of IP address.\n"
+"\n"
+"           asn\n"
+"           Autonomous system number (ASN) of IP address.\n"
+"\n"
+"           as_name\n"
+"           Autonomous system (AS) name of IP address.\n"
+"\n"
 "   -f, --format\n"
 "   Output format. Supported format:\n"
 "       - CSV (default)\n"
@@ -142,8 +154,8 @@ def print_usage():
 
 def print_version():
     print(
-"IP2Location™ Applications Version 8.0.0\n"
-"Copyright (c) 2021 IP2Location.com [MIT License]\n"
+"IP2Location™ Applications Version 8.1.0\n"
+"Copyright (c) 2023 IP2Location.com [MIT License]\n"
 "https://www.ip2location.com/free/applications\n")
     
 def print_header(format, output_file, field):
@@ -309,7 +321,6 @@ class Lookup:
 # if __name__ == '__main__':
 def main():
     is_help = False
-    # print(sys.argv)
     if len(sys.argv) >= 2:
         for index, arg in enumerate(sys.argv):
             if arg in ['--help', '-h', '-?']:
@@ -321,6 +332,7 @@ def main():
         if is_help is False:
             parser = create_parser()
             args = parser.parse_args(sys.argv[1:])
+            # args = parser.parse_args()
             if args.no_heading is not None:
                 no_heading = args.no_heading
             else:
@@ -329,7 +341,6 @@ def main():
             format = args.format
             field = args.field
             # output_file = args.output_file
-            # print (args.field)
             if args.output_file is not None:
                     output_file_pointer = open(args.output_file, 'a', encoding="utf-8")
             else:

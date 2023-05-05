@@ -1,6 +1,6 @@
 # IP2Locationpy
 
-IP2Locationpy is a Python tool allowing user to get IP address information such as country, region, city, latitude, longitude, zip code, time zone, ISP, domain name, connection type, area code, weather, mobile network, elevation, usage type, address type and IAB category by IP address (IPv4 or IPv6) from IP2Location BIN database.
+IP2Locationpy is a Python tool allowing user to get IP address information such as country, region, city, latitude, longitude, zip code, time zone, ISP, domain name, connection type, area code, weather, mobile network, elevation, usage type, address type, IAB category, district, autonomous system number (ASN) and autonomous system (AS) by IP address (IPv4 or IPv6) from IP2Location BIN database.
 
 For more details, please visit:
 https://www.ip2location.com/free/applications
@@ -34,8 +34,8 @@ ip2locationpy -d [IP2LOCATION BIN DATA PATH] -i [INPUT FILE PATH] --format XML
 ## Download More Sample Databases
 
 ```
-wget https://www.ip2location.com/downloads/sample.bin.db25.zip
-unzip samples-db25.zip
+wget https://www.ip2location.com/downloads/sample.bin.db26.zip
+unzip samples-db26.zip
 ```
 
 ## Support
