@@ -155,7 +155,7 @@ def print_usage():
 def print_version():
     print(
 "IP2Location™ Applications Version 8.1.0\n"
-"Copyright (c) 2023 IP2Location.com [MIT License]\n"
+"Copyright (c) 2024 IP2Location.com [MIT License]\n"
 "https://www.ip2location.com/free/applications\n")
     
 def print_header(format, output_file, field):
