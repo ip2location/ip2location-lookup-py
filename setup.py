@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="IP2Locationpy",
-    version="8.1.1",
+    version="8.1.2",
     description="A Python tool to display geolocation information in the traceroute.",
     long_description_content_type="text/markdown",
     long_description=long_description,
@@ -43,6 +43,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
